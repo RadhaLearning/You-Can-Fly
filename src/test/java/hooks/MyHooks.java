@@ -16,7 +16,7 @@ public class MyHooks extends BaseClass {
 	public void beforeScenario() {
 		//browserLaunch(ConfigReader.getProperty("BROWSER"));
 		multiPlatform(ConfigReader.getProperty("BROWSER"),ConfigReader.getProperty("PLATFORM"));
-		urlLaunch("https://cura-dev.in/");
+		urlLaunch("http://139.59.92.92/");
 		System.out.println("Currently enter after launched");
 		maximize();		
 		System.out.println("Currently enter after Maximize");

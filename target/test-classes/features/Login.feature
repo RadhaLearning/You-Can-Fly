@@ -1,46 +1,36 @@
 Feature: Login Page Functionality
-@smoke
-  Scenario: User can login with valid credentials
-    Given I am on the login page
-    When I enter valid "<username>" and "<password>"
-    And I click on the login button
-    Then I should be logged in successfully
-#
-  #Scenario: User cannot login with empty credentials
-    #Given I am on the login page
-    #When I leave the username and password fields empty
-    #And I click on the login button
-    #Then I should see an error message
-#
-  #Scenario: User cannot login with invalid username
-    #Given I am on the login page
-    #When I enter an invalid username
-    #And I enter a valid password
-    #And I click on the login button
-    #Then I should see an error message
-#
-  #Scenario: User cannot login with invalid password
-    #Given I am on the login page
-    #When I enter a valid username
-    #And I enter an invalid password
-    #And I click on the login button
-    #Then I should see an error message
-#
-  #Scenario: User can reset password
-    #Given I am on the login page
-    #And I click on the "Forgot Password" link
-    #When I enter my email address
-    #And I click on the "Send Reset Email" button
-    #Then I should see a success message
-#
-  #Scenario: User can navigate back to home page from login page
-    #Given I am on the login page
-    #When I click on the "Home" link
-    #Then I should be redirected to the home page
-#
-  #Scenario: User can navigate to registration page from login page
-    #Given I am on the login page
-    #When I click on the "Register" link
-    #Then I should be redirected to the registration page
-#
-  #Scenario: User can navigate to forgot password page
+
+Scenario: User successfully logs in with valid credentials
+Given the user is on the login page
+When the user enters valid username and valid password
+And the user clicks on the login button
+Then the user should be redirected to the dashboard
+
+Scenario: User encounters an error with invalid credentials
+Given the user is on the login page
+When the user enters invalid username and invalid password
+And the user clicks on the login button
+Then an error message should be displayed indicating invalid credentials
+
+Scenario: User forgets password and requests a password reset
+Given the user is on the login page
+When the user clicks on the Forgot Password? link
+And enters their email address
+And clicks on the Next step button
+Then a confirmation message should be displayed indicating that a password reset link has been sent to the user's email
+
+Scenario: User attempts to log in without providing any credentials
+Given the user is on the login page
+When the user clicks on the login button without entering any credentials
+Then an error message should be displayed indicating that both username and password are required
+
+Scenario: User attempts to log in with a blank password field
+Given the user is on the login page
+When the user enters valid username and leaves the password field blank
+And the user clicks on the login button
+Then an error message should be displayed indicating that the password field is required
+
+Scenario: User attempts to log in with a blank username field
+Given the user is on the login page
+When the user leaves the username field blank and enters valid password
+And the user clicks on the login button
